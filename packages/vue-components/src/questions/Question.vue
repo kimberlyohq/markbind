@@ -120,7 +120,7 @@
             class="btn btn-primary q-btn ml-1"
             @click="reset"
           >
-            Reset
+            Retry
           </button>
         </transition-group>
       </div>

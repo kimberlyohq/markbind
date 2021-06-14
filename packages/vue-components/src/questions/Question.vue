@@ -118,7 +118,7 @@
             key="retry"
             type="button"
             class="btn btn-primary q-btn ml-1"
-            @click="checkAnswer(false)"
+            @click="reset"
           >
             Retry
           </button>
@@ -229,6 +229,17 @@ export default {
     },
     isValidTypeAndNotTextWithoutKeywords() {
       return this.isValidQuestionType() && !(this.isTextQuestion() && !this.keywords);
+    },
+    reset() {
+      this.qState.state = STATE_FRESH;
+      this.qState.answered = false;
+      if (this.isTextQuestion()) {
+        this.textareaText = '';
+      } else {
+        this.answers.forEach((answer) => {
+          answer.selected = false;
+        });
+      }
     },
     markAsCorrect() {
       this.qState.state = STATE_CORRECT;
